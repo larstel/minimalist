@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="builder-content-language">
+    <head>
+        <title class="effect-shine"><builder-title></builder-title></title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+        <link rel="stylesheet" href="../../styles/custom.css">
+        <link rel="stylesheet" href="../../styles/styles.css">
+        <link rel="stylesheet" href="../../styles/table.css">
+        <link rel="stylesheet" href="../../styles/info-bar.css">
+        <link rel="stylesheet" href="../../styles/flex.css">
+        <link rel="stylesheet" href="../../styles/grid.css">
+        <link rel="stylesheet" href="../../styles/navigation.css">
+        <link rel="stylesheet" href="../../styles/color-scheme.css">
+        <link rel="stylesheet" href="../../styles/header.css">
+        <link rel="stylesheet" href="../../styles/buttons.css">
+        <link rel="stylesheet" href="../../styles/titles.css">
+        <link rel="stylesheet" href="../../styles/page-layout.css">
+        <link rel="stylesheet" href="../../styles/sub-navigation.css">
+        <link rel="stylesheet" href="../../styles/tooltip.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="manifest" href="../../static/manifest.json">
+        <link rel="apple-touch-icon" href="../../static/icon.svg">
+        <link rel="icon" href="../../static/icon.svg">
+    </head>
+
+    <script type="text/javascript" src="../../scripts/navigation.js"></script>
+    <script type="text/javascript" src="../../scripts/darkMode.js"></script>
+    <script type="text/javascript" src="../../scripts/onload.js"></script>
+    <script type="text/javascript" src="../../scripts/copyLink.js"></script>
+    
+    <body>
+        <div class="grid-container">
+            <div class="header">
+                <builder-header></builder-header>
+                <span class="sub-header">
+                    <builder-sub-header></builder-sub-header>
+                </span>
+                
+                <div class="icons">
+                    <button>
+                        <span 
+                            id="theme-button" 
+                            onclick="toggleTheme()" 
+                            class="material-icons md-light">
+                            dark_mode
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div id="content-scroll">
+                <div id="content-wrapper">
+                    <div id="content">
+                        <builder-content></builder-content>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button id="sideNavigationButton" class="rotate sideNavigationButton" value="closed" onmouseleave="closeSideNavigation()" onmouseover="openSideNavigation()" onclick="onSideNavigationButtonClicked()">
+            ☰ <builder-chapter-name></builder-chapter-name>
+        </button>
+
+        <nav onmouseleave="closeSideNavigation()" onmouseenter="openSideNavigation()">
+            <builder-nav></builder-nav>
+        </nav>
+    </body>
+</html>

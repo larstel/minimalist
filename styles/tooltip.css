@@ -1,0 +1,39 @@
+.tooltiptext {
+  position: relative;
+  display: inline;
+  visibility: hidden;
+  color: var(--color-content);
+  background-color: var(--color-secondary);
+  font-style: normal;
+  font-size: x-small;
+  font-weight: 100;
+  left: 5px;
+  top: -4px;
+  padding: 6px;
+  border-radius: 5px;
+  text-align: center;
+
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  margin-top: 100px;
+}
+
+.link-button, .link-text {
+  /* margin-top: 6px; */
+  margin-bottom: 8px;
+}
+
+.header-container .section-header {
+  font-size: 2rem;
+  font-weight: 300;
+  font-style: normal;
+  background-color: var(--color-primary);
+  color: var(--color-content);
+  padding: 0px;
+  margin-bottom: 10px;
+}

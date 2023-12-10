@@ -1,0 +1,13 @@
+/** default */
+
+html {
+    --color-accent: black;
+    --color-accent-secondary: blue;
+    --color-primary: white;
+    --color-secondary: white;
+    --color-content: black;
+    --color-content-transparent: rgba(0,0,0, 0.15);
+    --color-button-hover: rgba(255,255,255,0.25);
+    --color-hover: rgb(239, 239, 239);
+    --color-inactive: grey;
+}

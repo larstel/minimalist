@@ -1,0 +1,29 @@
+.header {
+  color: white;
+  background-color: var(--color-accent);
+
+  font-weight: bold;
+  font-size: larger;
+
+  line-height: 55px;
+  /* padding-left: 270px; */
+  padding-left: 15px;
+
+  z-index: 1;
+
+  box-shadow: 0.1px 0.1px 8px 0.1px var(--color-primary);
+}
+
+.sub-header {
+  font-size: small;
+  margin-bottom: 10px;
+}
+  
+.header .icons {
+  float: right;
+  font-size: 20px;
+  /* margin-right: 20px; */
+  /* margin-right: 270px; */
+  margin-right: 15px;
+  margin-top: 5px;
+}

@@ -1,0 +1,42 @@
+/*** not mobile devices ***/
+@media (min-width: 780px) {
+    .sub-navigation {
+        position: absolute;
+        top: 70px;
+        right: 70px;
+        width: 180px;
+    }
+}
+
+.sub-navigation {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.sub-navigation .content-header {
+    margin-bottom: 8px;
+    margin-left: 30px;
+    font-weight: 400;
+}
+
+.subNavigationElement {
+    white-space: nowrap;
+    text-decoration: none;
+    display: block;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    border-left: 1px solid var(--color-content-transparent);
+    color: var(--color-content)!important;
+    margin-left: 30px;
+}
+
+.subNavigationElement:hover {
+    font-weight: bold;
+}
+
+.subNavigationElement.active {
+    font-weight: bold;
+    border-left: 1px solid var(--color-content);
+    color: var(--color-content);
+}

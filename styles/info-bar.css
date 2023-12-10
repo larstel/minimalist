@@ -1,0 +1,56 @@
+.synonym {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 3px;
+    width: fit-content;
+}
+
+.synonym-header {
+    --border-radius: 5px;
+
+    border-top: 1px solid var(--color-content-transparent);
+    border-left: 1px solid var(--color-content-transparent);
+    border-bottom: 1px solid var(--color-content-transparent);
+    border-bottom-left-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
+    
+    text-align: center;
+
+    flex: 0 0 20px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.synonym-content {
+    --border-radius: 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    border: 1px solid var(--color-content-transparent);
+    border-bottom-right-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+
+    padding-left: 4px;
+    padding-right: 6px;
+    margin-right: 20px;
+
+    flex: 0 0 fit-content;
+
+    align-self: flex-start;
+
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.synonym-spacer {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-left: 3px;
+    margin-right: 3px;
+
+    border: 0.25px solid var(--color-content-transparent);
+}

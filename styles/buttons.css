@@ -1,0 +1,20 @@
+/* removes all style from the button. Therefore only the specific content is shown. */
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: white;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+#theme-button {
+	padding: 5px;
+}
+
+button:hover #theme-button:hover {
+	background-color: var(--color-button-hover);
+	border-radius: 5px;
+	transition-timing-function: linear;
+	transition-duration: 0.08s;
+}

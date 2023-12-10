@@ -1,0 +1,54 @@
+.no-link-style {
+  text-decoration: none !important;
+  color: var(--color-content);
+}
+
+.no-break {
+  white-space: nowrap;
+}
+
+svg>text {
+  fill: var(--color-content);
+}
+
+svg>line {
+  stroke: var(--color-content);
+}
+
+.legend {
+  font-size: x-small;
+}
+
+#content a:link {
+  color: var(--color-accent-secondary);
+}
+
+#content a:visited {
+  color: var(--color-accent-secondary);
+}
+
+#content a:hover {
+  color: var(--color-accent-secondary);
+}
+
+#content a:active {
+  color: var(--color-accent-secondary);
+}
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+html[data-theme='light'] .md-dark {
+  color: var(--color-content-transparent);
+}
+
+html[data-theme='dark'] .md-dark {
+  color: var(--color-content-transparent);
+}
