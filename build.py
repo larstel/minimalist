@@ -8,7 +8,7 @@ build_config = json.load(f)
 
 # create build folder
 Path("./build").mkdir(exist_ok=True)
-Path("./build/de/schwedisch").mkdir(parents=True, exist_ok=True)
+Path("./build/" + build_config["contentPath"]).mkdir(parents=True, exist_ok=True)
 
 # copy scripts, static, styles
 copy_tree("./scripts", "./build/scripts")
