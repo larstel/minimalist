@@ -1,8 +1,10 @@
 window.onload = function() {
     // navigation
     var currentLocation = document.getElementById(parent.location.hash.substring(1) + "_nav");
-    currentLocation.classList.add("active");
-    document.getElementById("_nav").scrollIntoView();
+    if(currentLocation != null) {
+        currentLocation.classList.add("active");
+        document.getElementById("_nav").scrollIntoView();
+    }
 
     //darkmode
     const htmlEl = document.getElementsByTagName('html')[0];
@@ -15,12 +17,6 @@ window.onload = function() {
     } else {
         setTheme('light');
     }
-
-    // scripts
-    var el = document.getElementById(parent.location.hash.substring(1) + "_nav");
-    el.classList.add("active");
-    document.getElementById("_nav").scrollIntoView();
-
 
     document.getElementById("content-scroll").addEventListener("scroll", (event) => {
         scrollTest();

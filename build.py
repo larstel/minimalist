@@ -51,15 +51,20 @@ with open("./template.html", 'r') as infile:
             content_copy = re.sub('<builder-content></builder-content>', f'{page_content}', content_copy)
 
             # insert navigation into template
-            active_page_title = page_name.split(".")[0].capitalize()
+            active_page_title = page_name.split(".")[0][3:].capitalize()
             content_copy = re.sub('<builder-chapter-name></builder-chapter-name>', active_page_title, content_copy)
 
             nav_html = ""
             
-            for page in os.listdir("../" + build_config["contentPath"]):
-                page_name_of_list = os.path.basename(page)
+            file_list = os.listdir("../" + build_config["contentPath"])
+            # german_chars = {ord('ae'):'ä', ord('ue'):'ü', ord('oe'):'ö'}
+            # file_list.translate(german_chars)
+            sortedList = sorted(file_list)
+            for page in sortedList:
+                page_name_of_list = os.path.basename(page)[3:]
                 page_name_of_list_title = page_name_of_list.split(".")[0].capitalize()
-                if page_name_of_list != page_name:
+                print(page_name.split("_")[1] + " / " + page_name_of_list)
+                if page_name_of_list != page_name.split("_")[1]:
                     nav_html = nav_html + f'\n<a class="navigationElement" href="./{page_name_of_list}">{page_name_of_list_title}</a>'
                 else:
                     nav_html = nav_html + f'\n<a class="navigationElement active" href="./{page_name}" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{active_page_title}</a>'
@@ -67,5 +72,5 @@ with open("./template.html", 'r') as infile:
             content_copy = re.sub('<builder-nav></builder-nav>', f'{nav_html}', content_copy)
 
             # safe as new file
-            with open(f'./build/{build_config["contentPath"]}/{page_name}', 'w') as outfile:
+            with open(f'./build/{build_config["contentPath"]}/{page_name[3:]}', 'w') as outfile:
                 outfile.write(content_copy)

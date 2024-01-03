@@ -37,8 +37,6 @@ function openSideNavigation() {
       toggleButton.style.left = "150px";
       toggleButton.value = "opened";
   
-      var el = document.getElementById(parent.location.hash.substring(1) + "_nav");
-      el.classList.add("active");
       document.getElementById("_nav").scrollIntoView();
     }
 }
