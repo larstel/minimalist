@@ -51,8 +51,8 @@ with open("./template.html", 'r') as infile:
             content_copy = re.sub('<builder-content></builder-content>', f'{page_content}', content_copy)
 
             # insert navigation into template
-            active_page_title = page_name.split(".")[0][3:].capitalize()
-            content_copy = re.sub('<builder-chapter-name></builder-chapter-name>', active_page_title, content_copy)
+            active_page_title = page_name.split(".")[0][3:]
+            content_copy = re.sub('<builder-chapter-name></builder-chapter-name>', active_page_title.capitalize(), content_copy)
 
             nav_html = ""
             
@@ -62,12 +62,13 @@ with open("./template.html", 'r') as infile:
             sortedList = sorted(file_list)
             for page in sortedList:
                 page_name_of_list = os.path.basename(page)[3:]
-                page_name_of_list_title = page_name_of_list.split(".")[0].capitalize()
-                print(page_name.split("_")[1] + " / " + page_name_of_list)
-                if page_name_of_list != page_name.split("_")[1]:
-                    nav_html = nav_html + f'\n<a class="navigationElement" href="./{page_name_of_list}">{page_name_of_list_title}</a>'
-                else:
-                    nav_html = nav_html + f'\n<a class="navigationElement active" href="./{page_name}" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{active_page_title}</a>'
+                page_name_of_list_title = page_name_of_list.split(".")[0]
+                if(page_name_of_list_title not in build_config["navigationBlacklist"]):
+                    
+                    if page_name_of_list.capitalize() != page_name.split("_")[1]:
+                        nav_html = nav_html + f'\n<a class="navigationElement" href="./{page_name_of_list}">{page_name_of_list_title.capitalize()}</a>'
+                    else:
+                        nav_html = nav_html + f'\n<a class="navigationElement active" href="./{page_name}" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{active_page_title}</a>'
 
             content_copy = re.sub('<builder-nav></builder-nav>', f'{nav_html}', content_copy)
 

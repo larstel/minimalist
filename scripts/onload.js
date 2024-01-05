@@ -1,3 +1,5 @@
+let latestElementId;
+
 window.onload = function() {
     // navigation
     var currentLocation = document.getElementById(parent.location.hash.substring(1) + "_nav");
@@ -33,8 +35,9 @@ function scrollTest() {
         if(distance > 20 && distance < (window.innerHeight - window.innerHeight/1.5)) {
             if(element.id === 'top') {
                 history.pushState({}, "", " ");
-            } else {
+            } else if(latestElementId != element.id){
                 history.pushState({}, "", "#" + element.id);
+                latestElementId = element.id;
             }
 
             var allElementsWhichAreActive = document.getElementsByClassName("subNavigationElement active");
@@ -43,7 +46,7 @@ function scrollTest() {
                 allElementsWhichAreActive[0].classList.remove("active");
             }
 
-            if(element.id !== 'top') {
+            if(element.id != 'top') {
                 document.getElementById(element.id + '_nav').classList.add("active");
             }
             break;

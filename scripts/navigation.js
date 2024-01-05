@@ -55,6 +55,11 @@ function closeSideNavigation() {
     }
 }
 
+function writeEmail() {
+  var holder = Array('m','a','i','l','t','o',':','c','o','n','t','a','c','t','@','g','r','a','m','m','a','t','i','c','u','s','.','i','o');
+  document.location.href = holder.join("");
+}
+
 // function onMediaWidthChanged(mediaMatcher) {
 //     var sideNavigation = document.getElementsByTagName("nav")[0];
     
