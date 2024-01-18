@@ -18,7 +18,7 @@ function toggleTheme() {
  */
 function setTheme(theme) {
     let htmlElement = document.getElementsByTagName('html')[0];
-    let themeButton = document.getElementById("theme-button");
+    let themeButton = document.getElementById("darkmode-button");
 
     htmlElement.dataset.theme = theme;
     localStorage.setItem('theme', theme);
