@@ -1,6 +1,6 @@
 .synonym {
     display: flex;
-    padding-top: 10px;
+    padding-top: 0px;
     padding-bottom: 3px;
     width: fit-content;
 }
@@ -22,6 +22,7 @@
     padding-right: 5px;
     padding-top: 2px;
     padding-bottom: 2px;
+
 }
 
 .synonym-content {

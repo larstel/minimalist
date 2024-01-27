@@ -20,17 +20,17 @@
   align-items: center;
   gap: 6px;
   flex-wrap: nowrap;
-  margin-top: 100px;
+  margin-top: 130px;
 }
 
 .link-button, .link-text {
   /* margin-top: 6px; */
-  margin-bottom: 8px;
+  margin-bottom: -12px;
 }
 
-.header-container .section-header {
-  font-size: 2rem;
-  font-weight: 300;
+.header-container h2 {
+  font-size: 1.8rem;
+  font-weight: 100;
   font-style: normal;
   background-color: var(--color-primary);
   color: var(--color-content);

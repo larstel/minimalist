@@ -34,9 +34,9 @@ function scrollTest() {
         var distance = element.offsetTop - scrollPos;
         if(distance > 20 && distance < (window.innerHeight - window.innerHeight/1.5)) {
             if(element.id === 'top') {
-                history.pushState({}, "", " ");
+                // history.pushState({}, "", " ");
             } else if(latestElementId != element.id){
-                history.pushState({}, "", "#" + element.id);
+                // history.pushState({}, "", "#" + element.id);
                 latestElementId = element.id;
             }
 

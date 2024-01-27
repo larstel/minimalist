@@ -1,5 +1,5 @@
 .flex-container {
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     column-gap: 50px;
     /* row-gap: 10px; */
@@ -11,6 +11,6 @@
 }
 
 .table-content{
-    width: inherit;
-    overflow: scroll;
+    /* width: inherit; */
+    overflow: auto;
 }

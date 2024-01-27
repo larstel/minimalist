@@ -29,7 +29,7 @@ function onSideNavigationButtonClicked() {
 }
 
 function openSideNavigation() {
-    var sideNavigation = document.getElementsByTagName("nav")[0];
+    var sideNavigation = document.getElementsByClassName("main-navigation")[0];
     var toggleButton = document.getElementById("sideNavigationButton");
   
     if (sideNavigation && toggleButton) {
@@ -42,7 +42,7 @@ function openSideNavigation() {
 }
 
 function closeSideNavigation() {
-    var sideNavigation = document.getElementsByTagName("nav")[0];
+    var sideNavigation = document.getElementsByClassName("main-navigation")[0];
     var toggleButton = document.getElementById("sideNavigationButton");
   
     if (
@@ -61,7 +61,7 @@ function writeEmail() {
 }
 
 // function onMediaWidthChanged(mediaMatcher) {
-//     var sideNavigation = document.getElementsByTagName("nav")[0];
+//     var sideNavigation = document.getElementsByClassName("main-navigation")[0];
     
 //     var toggleButton = document.getElementById("sideNavigationButton");
 //     var content = document.getElementById("content");

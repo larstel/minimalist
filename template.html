@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="builder-content-language">
     <head>
-        <title class="effect-shine"><builder-title></builder-title></title>
-
+        <title><builder-title></builder-title></title>
+        <meta name="description" content="builder-content-description">
+        <meta name="keywords" content="builder-content-keywords">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
        
@@ -28,11 +29,6 @@
         <link rel="apple-touch-icon" href="../../static/icon.svg">
         <link rel="icon" href="../../static/icon.svg">
     </head>
-
-    <script type="text/javascript" src="../../scripts/navigation.js"></script>
-    <script type="text/javascript" src="../../scripts/darkMode.js"></script>
-    <script type="text/javascript" src="../../scripts/onload.js"></script>
-    <script type="text/javascript" src="../../scripts/copyLink.js"></script>
     
     <body>
         <div class="grid-container">
@@ -54,18 +50,12 @@
                 </div>
                 
                 <span class="language-selector">
-                    <button>
-                        <span class="header-button">
-                            DE
-                        </span>
-                    </button>
-                    |
-                    <button>
-                        <span class="header-button">
-                            EN
-                        </span>
-                    </button>
+                    <!-- <language-selector-content></language-selector-content> -->
                 </span>
+
+                <!-- <span class="search">
+                    Suche
+                </span> -->
                 
                 
             </div>
@@ -82,8 +72,13 @@
             ☰ <builder-chapter-name></builder-chapter-name>
         </button>
 
-        <nav onmouseleave="closeSideNavigation()" onmouseenter="openSideNavigation()">
+        <nav class="main-navigation" onmouseleave="closeSideNavigation()" onmouseenter="openSideNavigation()">
             <builder-nav></builder-nav>
         </nav>
+
+        <script type="text/javascript" src="../../scripts/navigation.js"></script>
+        <script type="text/javascript" src="../../scripts/darkMode.js"></script>
+        <script type="text/javascript" src="../../scripts/onload.js"></script>
+        <script type="text/javascript" src="../../scripts/copyLink.js"></script>
     </body>
 </html>

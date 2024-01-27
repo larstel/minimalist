@@ -10,4 +10,5 @@ html {
     --color-button-hover: rgba(255,255,255,0.25);
     --color-hover: rgb(239, 239, 239);
     --color-inactive: grey;
+    --color-shadow: #0000004d;
 }
