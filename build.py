@@ -108,7 +108,7 @@ for language_code in build_config["availableLanguages"]:
                     localization_content = ''
                     for available_language_code in build_config["availableLanguages"]:
                         if available_language_code != language_code:
-                            localization_content += f'<button onclick="window.location.href=\'file:///Users/lars/Documents/GitRepos/Grammatikson/minimalist/build/{available_language_code}/{general_localization[available_language_code]}/{translation_dict[page_name[3:].split(".")[0] + "_filename"][available_language_code]}.html\';"><span class="header-button">{available_language_code.upper()}</span></button>'
+                            localization_content += f'<button onclick="window.location.href=\'file:///Users/lars/Documents/GitRepos/Grammatikson/minimalist/build/{available_language_code}/{general_localization[available_language_code]}/{translation_dict["filename"][available_language_code]}.html\';"><span class="header-button">{available_language_code.upper()}</span></button>'
 
                     content_copy = re.sub('<language-selector-content></language-selector-content>', f'{localization_content}', content_copy)
 
@@ -116,7 +116,7 @@ for language_code in build_config["availableLanguages"]:
                     content_copy = re.sub('<builder-content></builder-content>', f'{page_content}', content_copy)
 
                     # insert navigation into template
-                    content_copy = re.sub('<builder-chapter-name></builder-chapter-name>', ersetze_umlaute(translation_dict[active_page_title + "_filename"][language_code].capitalize()), content_copy)
+                    content_copy = re.sub('<builder-chapter-name></builder-chapter-name>', ersetze_umlaute(translation_dict["filename"][language_code].capitalize()), content_copy)
 
 
                     nav_html = ""
@@ -136,14 +136,14 @@ for language_code in build_config["availableLanguages"]:
                         if(page_name_of_list not in build_config["navigationBlacklist"]):
                             print(page_name_of_list.capitalize() + " : " + page_name.split("_")[1])
                             if page_name_of_list != page_name.split("_")[1].split(".")[0]:
-                                nav_html = nav_html + f'\n<a class="navigationElement" href="./{translation_dict_of_list[page_name_of_list + "_filename"][language_code]}.html">{ersetze_umlaute(translation_dict_of_list[page_name_of_list + "_filename"][language_code].capitalize())}</a>'
+                                nav_html = nav_html + f'\n<a class="navigationElement" href="./{translation_dict_of_list["filename"][language_code]}.html">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
                             else:
-                                nav_html = nav_html + f'\n<a class="navigationElement active" href="./{translation_dict_of_list[page_name_of_list + "_filename"][language_code]}.html" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{ersetze_umlaute(translation_dict_of_list[page_name_of_list + "_filename"][language_code].capitalize())}</a>'
+                                nav_html = nav_html + f'\n<a class="navigationElement active" href="./{translation_dict_of_list["filename"][language_code]}.html" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
 
                     content_copy = re.sub('<builder-nav></builder-nav>', f'{nav_html}', content_copy)
 
                     # safe as new file
-                    translated_filename = translation_dict[page_name[3:].split(".")[0] + "_filename"][language_code]
+                    translated_filename = translation_dict["filename"][language_code]
 
                     with open(f'./build/{language_code}/{general_localization[language_code]}/{translated_filename}.html', 'w') as outfile:
                         outfile.write(content_copy)
