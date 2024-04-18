@@ -27,7 +27,7 @@
   .sideNavigationButton {
     visibility: hidden;
   }
-  nav {
+  .main-navigation {
     width: 200px;
     background-color: var(--color-primary);
   }
