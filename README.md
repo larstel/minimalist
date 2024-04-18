@@ -27,3 +27,25 @@
 
 ## custom.css (mandatory)
 - for implementing custom css classes
+
+## content localization
+- each content template needs its own localization file
+- naming: "index-of-menu-entry"_"filename"_localization.json
+
+File must at least contain the following content:
+~~~~
+{
+    "keywords": {
+        "de": "",
+        "en": ""
+    },
+    "description": {
+        "de": "",
+        "en": ""
+    },
+    "filename": {
+        "de": "",
+        "en": ""
+    }
+}
+~~~~
