@@ -56,7 +56,7 @@ function closeSideNavigation() {
 }
 
 function writeEmail() {
-  var holder = Array('m','a','i','l','t','o',':','c','o','n','t','a','c','t','@','g','r','a','m','m','a','t','i','c','u','s','.','i','o');
+  var holder = Array('m','a','i','l','t','o',':','l','a','r','s','@','t','e','l','o','e','k','e','n','.','d','e','v');
   document.location.href = holder.join("");
 }
 

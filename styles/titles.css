@@ -42,7 +42,7 @@ h2:not(:first-child) {
 h4 {
   font-size: 1rem;
   margin-bottom: 8px;
-  font-weight: 100;
+  font-weight: 400;
 }
 
 /*** not mobile devices ***/

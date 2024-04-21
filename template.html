@@ -21,13 +21,49 @@
         <link rel="stylesheet" href="../../styles/page-layout.css">
         <link rel="stylesheet" href="../../styles/sub-navigation.css">
         <link rel="stylesheet" href="../../styles/tooltip.css">
+
+        <!-- <script type="text/plain"
+            data-type="preconnect"
+            data-name="googleFonts"
+            data-src="https://fonts.googleapis.com">
+        </script> -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
+        <!-- <script type="text/plain"
+            data-type="preconnect"
+            data-name="googleFonts"
+            data-src="https://fonts.gstatic.com"
+            crossorigin>
+        </script> -->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- <script type="text/plain"
+            data-type="stylesheet"
+            data-name="googleFonts"
+            data-src="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
+        </script> -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
+        <!-- <script type="text/plain"
+            data-type="stylesheet"
+            data-name="googleFonts"
+            data-src="https://fonts.googleapis.com/icon?family=Material+Icons">
+        </script> -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="manifest" href="../../static/manifest.json">
         <link rel="apple-touch-icon" href="../../static/icon.svg">
         <link rel="icon" href="../../static/icon.svg">
+        <script type="text/plain"
+            data-type="text/javascript"
+            data-name="plausible"
+            defer data-domain="grammaticus.io"
+            data-src="https://plausible.teloeken.dev/js/script.js">
+        </script>
+
+        <!-- <script defer data-domain="grammaticus.io" src="https://plausible.teloeken.dev/js/script.js"></script> -->
+        <!-- make sure the config gets loaded before Klaro -->
+        <script defer type="text/javascript" src="../../configs/config.js"></script>
+        <script defer type="text/javascript" src="https://cdn.kiprotect.com/klaro/v0.7/klaro-no-css.js"></script>
+
+
+        <builder-header-tags></builder-header-tags>
     </head>
     
     <body>
@@ -39,13 +75,11 @@
                 </span>
                 
                 <div class="icons">
-                    <button>
-                        <span 
+                    <button
                             id="darkmode-button" 
                             onclick="toggleTheme()" 
                             class="material-icons md-light header-button">
                             dark_mode
-                        </span>
                     </button>
                 </div>
                 

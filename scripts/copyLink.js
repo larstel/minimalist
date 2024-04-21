@@ -8,7 +8,7 @@ function onTooltipClicked(element, url) {
     navigator.clipboard.writeText(url)
 
     let tooltipText = element.getElementsByClassName("tooltiptext")[0];
-    tooltipText.innerHTML = "Link kopiert";
+    tooltipText.innerHTML = "link copied"; // TODO: translate dynamically to choosen language
 }
 
 /**
@@ -19,7 +19,7 @@ function onTooltipClicked(element, url) {
 function onTooltipLeft(element) {
     let tooltipText = element.getElementsByClassName("tooltiptext")[0];
 
-    tooltipText.innerHTML = "Link kopieren";
+    tooltipText.innerHTML = "copy link"; // TODO: translate dynamically to choosen language
     tooltipText.style.visibility = "hidden";
 }
 

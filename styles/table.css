@@ -32,7 +32,7 @@ thead {
   border-bottom: 1.5px solid var(--color-content-transparent);
 }
 
-/* tbody:nth-child(even) {
+tbody:nth-child(even) {
   background-color: var(--color-secondary);
-} */
+}
 

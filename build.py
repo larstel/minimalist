@@ -10,10 +10,11 @@ build_config = json.load(f)
 # create build folder
 Path("./build").mkdir(exist_ok=True)
 
-# copy scripts, static, styles
+# copy scripts, static, styles, configs
 copy_tree("./scripts", "./build/scripts")
 copy_tree("./styles", "./build/styles")
 copy_tree("./static", "./build/static")
+copy_tree("../configs", "./build/configs")
 
 # copy custom css into build
 shutil.copyfile("../custom.css", "./build/styles/custom.css")
@@ -96,7 +97,7 @@ for language_code in build_config["availableLanguages"]:
                     content_copy = re.sub('builder-content-keywords', keywords, content_copy)
 
                     # insert title
-                    content_copy = re.sub('<builder-title></builder-title>', general_localization["title"][language_code] + " | " + ersetze_umlaute(active_page_title.capitalize()), content_copy)
+                    content_copy = re.sub('<builder-title></builder-title>', general_localization["title"][language_code] + " | " + ersetze_umlaute(translation_dict["filename"][language_code].capitalize()), content_copy)
 
                     # insert header
                     content_copy = re.sub('<builder-header></builder-header>', build_config["header"], content_copy)
@@ -139,6 +140,9 @@ for language_code in build_config["availableLanguages"]:
                                 nav_html = nav_html + f'\n<a class="navigationElement" href="./{translation_dict_of_list["filename"][language_code]}.html">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
                             else:
                                 nav_html = nav_html + f'\n<a class="navigationElement active" href="./{translation_dict_of_list["filename"][language_code]}.html" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
+                        else:
+                            content_copy = re.sub('<builder-header-tags></builder-header-tags>', '<meta name="robots" content="noindex, nofollow">', content_copy)
+
 
                     content_copy = re.sub('<builder-nav></builder-nav>', f'{nav_html}', content_copy)
 
