@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="builder-content-language">
+<html lang="builder-content-language" data-theme='dark'>
     <head>
         <title><builder-title></builder-title></title>
         <meta name="description" content="builder-content-description">
         <meta name="keywords" content="builder-content-keywords">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       
+
         <link rel="stylesheet" href="../../styles/custom.css">
         <link rel="stylesheet" href="../../styles/styles.css">
         <link rel="stylesheet" href="../../styles/table.css">
         <link rel="stylesheet" href="../../styles/info-bar.css">
         <link rel="stylesheet" href="../../styles/flex.css">
-        <link rel="stylesheet" href="../../styles/grid.css">
         <link rel="stylesheet" href="../../styles/navigation.css">
         <link rel="stylesheet" href="../../styles/color-scheme.css">
         <link rel="stylesheet" href="../../styles/header.css">
@@ -21,66 +20,54 @@
         <link rel="stylesheet" href="../../styles/page-layout.css">
         <link rel="stylesheet" href="../../styles/sub-navigation.css">
         <link rel="stylesheet" href="../../styles/tooltip.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
 
-        <!-- <script type="text/plain"
-            data-type="preconnect"
-            data-name="googleFonts"
-            data-src="https://fonts.googleapis.com">
-        </script> -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <!-- <script type="text/plain"
-            data-type="preconnect"
-            data-name="googleFonts"
-            data-src="https://fonts.gstatic.com"
-            crossorigin>
-        </script> -->
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <!-- <script type="text/plain"
-            data-type="stylesheet"
-            data-name="googleFonts"
-            data-src="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
-        </script> -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
-        <!-- <script type="text/plain"
-            data-type="stylesheet"
-            data-name="googleFonts"
-            data-src="https://fonts.googleapis.com/icon?family=Material+Icons">
-        </script> -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="manifest" href="../../static/manifest.json">
         <link rel="apple-touch-icon" href="../../static/icon.svg">
         <link rel="icon" href="../../static/icon.svg">
-        <script type="text/plain"
-            data-type="text/javascript"
-            data-name="plausible"
-            defer data-domain="grammaticus.io"
-            data-src="https://plausible.teloeken.dev/js/script.js">
-        </script>
 
-        <!-- <script defer data-domain="grammaticus.io" src="https://plausible.teloeken.dev/js/script.js"></script> -->
-        <!-- make sure the config gets loaded before Klaro -->
-        <script defer type="text/javascript" src="../../configs/config.js"></script>
-        <script defer type="text/javascript" src="https://cdn.kiprotect.com/klaro/v0.7/klaro-no-css.js"></script>
-
+        <script defer data-domain="grammaticus.io"></script>
 
         <builder-header-tags></builder-header-tags>
     </head>
     
     <body>
+        <div onmouseleave="closeLanguageSelector()" id="language-selector" class="all-languages">
+            <div onclick="changeLanguage('nl')" class="language-entry">Dutch</div>
+            <div onclick="changeLanguage('en')" class="language-entry">English</div>
+            <div onclick="changeLanguage('fr')" class="language-entry">French</div>
+            <div onclick="changeLanguage('ge')" class="language-entry">German</div>
+            <div onclick="changeLanguage('it')" class="language-entry">Italian</div>
+            <div onclick="changeLanguage('es')" class="language-entry">Spanish</div>
+            <div onclick="changeLanguage('sw')" class="language-entry">Swedish</div>
+        </div>
         <div class="grid-container">
             <div class="header">
+                <div class="icons-left">
+                    <button id="sideNavigationButton" class="material-icons md-light header-button" value="closed" onclick="onSideNavigationButtonClicked()">
+                        <img src="../../static/menu.svg" alt="menu">
+
+                    </button>
+                </div>
                 <builder-header></builder-header>
                 <span class="sub-header">
                     <builder-sub-header></builder-sub-header>
                 </span>
                 
-                <div class="icons">
+                <div class="icons-right">
                     <button
-                            id="darkmode-button" 
+                            onclick="openLanguageSelector()"
+                            class="material-icons md-light header-button">
+                            <img src="../../static/language.svg" alt="language symbol">
+                            <span id="language-code" class="current-language">EN</span>
+                            <img src="../../static/arrow.svg" alt="language dropdow">
+                    </button>
+
+    
+
+                    <button
+                            
                             onclick="toggleTheme()" 
                             class="material-icons md-light header-button">
-                            dark_mode
+                            <img id="darkmode-button" src="../../static/dark_mode.svg" alt="dark mode">
                     </button>
                 </div>
                 
@@ -103,11 +90,12 @@
             </div>
         </div>
 
-        <button id="sideNavigationButton" class="rotate sideNavigationButton" value="closed" onmouseleave="closeSideNavigation()" onmouseover="openSideNavigation()" onclick="onSideNavigationButtonClicked()">
-            ☰ <builder-chapter-name></builder-chapter-name>
-        </button>
+        <div id="alert-badge" class="alert-badge">
+            <div id="alert-text" class="alert-text"></div>
+            <div class="bar"></div>
+        </div>
 
-        <nav class="main-navigation" onmouseleave="closeSideNavigation()" onmouseenter="openSideNavigation()">
+        <nav class="main-navigation" onmouseleave="closeSideNavigation()">
             <builder-nav></builder-nav>
         </nav>
 
@@ -115,7 +103,6 @@
         <script type="text/javascript" src="../../scripts/darkMode.js"></script>
         <script type="text/javascript" src="../../scripts/onload.js"></script>
         <script type="text/javascript" src="../../scripts/copyLink.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
+        <script type="text/javascript" src="../../scripts/language.js"></script>
     </body>
 </html>

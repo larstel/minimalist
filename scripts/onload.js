@@ -1,15 +1,7 @@
 let latestElementId;
 
 window.onload = function() {
-    // navigation
-    var currentLocation = document.getElementById(parent.location.hash.substring(1) + "_nav");
-    if(currentLocation != null) {
-        currentLocation.classList.add("active");
-        document.getElementById("_nav").scrollIntoView();
-    }
-
     //darkmode
-    const htmlEl = document.getElementsByTagName('html')[0];
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
     if (currentTheme) {
@@ -24,6 +16,14 @@ window.onload = function() {
         scrollTest();
     });
 
+    // navigation
+    var currentLocation = document.getElementById(parent.location.hash.substring(1) + "_nav");
+    if(currentLocation != null) {
+        currentLocation.classList.add("active");
+        document.getElementById("_nav").scrollIntoView();
+    }
+
+    // scroll
     scrollTest();
 }
 

@@ -37,11 +37,16 @@ function openSideNavigation() {
       toggleButton.style.left = "150px";
       toggleButton.value = "opened";
   
-      document.getElementById("_nav").scrollIntoView();
+      var _nav = document.getElementById("_nav")
+      if(_nav != null) {
+        _nav.scrollIntoView();
+      }
+
     }
 }
 
 function closeSideNavigation() {
+  if(window.innerWidth <= 1100) {
     var sideNavigation = document.getElementsByClassName("main-navigation")[0];
     var toggleButton = document.getElementById("sideNavigationButton");
   
@@ -49,10 +54,10 @@ function closeSideNavigation() {
       sideNavigation &&
       toggleButton
     ) {
-      sideNavigation.style.width = "20px";
-      toggleButton.style.left = "-30px";
+      sideNavigation.style.width = "0";
       toggleButton.value = "closed";
     }
+  }
 }
 
 function writeEmail() {
@@ -84,7 +89,13 @@ function writeEmail() {
 //       }
 //     }
 //   }
-  
-  // var mediaMatcher = window.matchMedia("(max-width: 560px)");
-  // onMediaWidthChanged(mediaMatcher);
-  // mediaMatcher.addListener(onMediaWidthChanged);
+function onMediaWidthChanged(mediaMatcher) {
+  if (mediaMatcher.matches) {
+    openSideNavigation();
+  } else {
+    closeSideNavigation();
+  }
+}
+
+var mediaMatcher = window.matchMedia("(min-width: 1100px)");
+mediaMatcher.addListener(onMediaWidthChanged);

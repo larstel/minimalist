@@ -25,8 +25,9 @@ function setTheme(theme) {
 
     // set the darkmode icon
     if(theme == 'dark') {
-        themeButton.innerText = "light_mode";
+        themeButton.setAttribute("src", "../../static/light_mode.svg");
     } else if (theme == 'light') {
-        themeButton.innerText = "dark_mode";
+        themeButton.setAttribute("src", "../../static/dark_mode.svg");
+
     }
 }

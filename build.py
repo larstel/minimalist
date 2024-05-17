@@ -116,10 +116,6 @@ for language_code in build_config["availableLanguages"]:
                     # insert content into template
                     content_copy = re.sub('<builder-content></builder-content>', f'{page_content}', content_copy)
 
-                    # insert navigation into template
-                    content_copy = re.sub('<builder-chapter-name></builder-chapter-name>', ersetze_umlaute(translation_dict["filename"][language_code].capitalize()), content_copy)
-
-
                     nav_html = ""
 
 
@@ -137,9 +133,9 @@ for language_code in build_config["availableLanguages"]:
                         if(page_name_of_list not in build_config["navigationBlacklist"]):
                             print(page_name_of_list.capitalize() + " : " + page_name.split("_")[1])
                             if page_name_of_list != page_name.split("_")[1].split(".")[0]:
-                                nav_html = nav_html + f'\n<a class="navigationElement" href="./{translation_dict_of_list["filename"][language_code]}.html">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
+                                nav_html = nav_html + f'\n<a class="navigationElement" href="/en/swedish/{translation_dict_of_list["filename"][language_code]}.html">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
                             else:
-                                nav_html = nav_html + f'\n<a class="navigationElement active" href="./{translation_dict_of_list["filename"][language_code]}.html" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
+                                nav_html = nav_html + f'\n<a class="navigationElement active" href="/en/swedish/{translation_dict_of_list["filename"][language_code]}.html" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
                         else:
                             content_copy = re.sub('<builder-header-tags></builder-header-tags>', '<meta name="robots" content="noindex, nofollow">', content_copy)
 

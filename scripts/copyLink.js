@@ -5,10 +5,30 @@
  * @param {*} url the url which should be copied into the clipboard
  */
 function onTooltipClicked(element, url) {
-    navigator.clipboard.writeText(url)
+    alreadyClicked = true;
+    navigator.clipboard
+    .writeText(url)
+    .then(() => {
+        // const isMobile = navigator.userAgentData.mobile;
+        if(window.innerWidth <= 1100) {
+            let tooltipText = document.getElementById("alert-badge");
+            tooltipText.style.display = "block";
 
-    let tooltipText = element.getElementsByClassName("tooltiptext")[0];
-    tooltipText.innerHTML = "link copied"; // TODO: translate dynamically to choosen language
+            let alertText = document.getElementById("alert-text");
+
+            alertText.innerHTML = "link copied"; // TODO: translate dynamically to choosen language
+            setTimeout(() => {
+                tooltipText.style.display = "none";
+            }, 3000);
+        } else {
+            let tooltipText = element.getElementsByClassName("tooltiptext")[0];
+            tooltipText.innerHTML = "link copied"; // TODO: translate dynamically to choosen language
+        }
+
+    })
+    .catch((error) => {
+        alert("Copy of link failed: " + error); // TODO: translate dynamically to choosen language
+    });
 }
 
 /**
@@ -28,6 +48,8 @@ function onTooltipLeft(element) {
  * @param {*} element the parent element which the tooltip button is a childen of
  */
 function onTooltipEnter(element){
-    let tooltipText = element.getElementsByClassName("tooltiptext")[0];
-    tooltipText.style.visibility = "visible";
+    if(window.innerWidth > 780) {
+        let tooltipText = element.getElementsByClassName("tooltiptext")[0];
+        tooltipText.style.visibility = "visible";
+    }
 }
