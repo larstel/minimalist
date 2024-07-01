@@ -28,16 +28,16 @@
 
         <builder-header-tags></builder-header-tags>
     </head>
+
+    <script>
+        builder-translation-language
+        builder-translation-filename
+    </script>
     
     <body>
         <div onmouseleave="closeLanguageSelector()" id="language-selector" class="all-languages">
-            <div onclick="changeLanguage('nl')" class="language-entry">Dutch</div>
             <div onclick="changeLanguage('en')" class="language-entry">English</div>
-            <div onclick="changeLanguage('fr')" class="language-entry">French</div>
-            <div onclick="changeLanguage('ge')" class="language-entry">German</div>
-            <div onclick="changeLanguage('it')" class="language-entry">Italian</div>
-            <div onclick="changeLanguage('es')" class="language-entry">Spanish</div>
-            <div onclick="changeLanguage('sw')" class="language-entry">Swedish</div>
+            <div onclick="changeLanguage('de')" class="language-entry">German</div>
         </div>
         <div class="grid-container">
             <div class="header">
@@ -54,20 +54,15 @@
                 
                 <div class="icons-right">
                     <button
-                            onclick="openLanguageSelector()"
-                            class="material-icons md-light header-button">
-                            <img src="../../static/language.svg" alt="language symbol">
-                            <span id="language-code" class="current-language">EN</span>
-                            <img src="../../static/arrow.svg" alt="language dropdow">
+                        onclick="toggleLanguageSelector()"
+                        class="material-icons md-light header-button">
+                        <img src="../../static/language.svg" alt="language symbol"><span id="language-code" class="current-language">EN</span><img src="../../static/arrow.svg" alt="language dropdow">
                     </button>
 
-    
-
                     <button
-                            
-                            onclick="toggleTheme()" 
-                            class="material-icons md-light header-button">
-                            <img id="darkmode-button" src="../../static/dark_mode.svg" alt="dark mode">
+                        onclick="toggleTheme()" 
+                        class="material-icons md-light header-button">
+                        <img id="darkmode-button" src="../../static/dark_mode.svg" alt="dark mode">
                     </button>
                 </div>
                 

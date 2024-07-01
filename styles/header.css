@@ -63,6 +63,7 @@
 }
 
 .current-language {
+  font-family: "Ubuntu", sans-serif;
   font-size: 12px;
   text-transform: uppercase;
 }
@@ -90,5 +91,5 @@
 }
 
 .language-entry:hover {
-  background-color: bisque;
+  background-color: var(--color-hover);
 }
