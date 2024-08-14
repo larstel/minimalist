@@ -1,15 +1,12 @@
 function changeLanguage(languageCode) {
-
-    
-
     var languageCodeElement = document.getElementById("language-code");
     languageCodeElement.innerHTML = languageCode;
     
     const currentUrl = window.location.href;
 
-    let languageCodeReplaceIndex = 1;
-    let languageReplaceIndex = 2;
-    let filenameReplaceIndex = 3;
+    let languageCodeReplaceIndex = 3;
+    let languageReplaceIndex = 4;
+    let filenameReplaceIndex = 5;
     if(currentUrl.startsWith("file")){ // dev environment
         languageCodeReplaceIndex = 10;
         languageReplaceIndex = 11;
@@ -28,11 +25,7 @@ function changeLanguage(languageCode) {
         newUrl = newUrl.slice(0, hashIndex);
     }
 
-    console.log(newUrl)
     window.location.href = newUrl;
-
-    var selector = document.getElementById("language-selector");
-    selector.style.display = "none";
 }
 
 function closeLanguageSelector() {

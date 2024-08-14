@@ -1,4 +1,4 @@
-function onSideNavigationLinkClicked(newActiveElement) {
+function onSideNavigationLinkClicked() {
     var allElementsWhichAreActive = document.getElementsByClassName("secondary active");
   
     while (allElementsWhichAreActive.length) {

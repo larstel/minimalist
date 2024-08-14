@@ -4,10 +4,19 @@
  * @param {*} element the parent element which the tooltip button is a childen of
  * @param {*} url the url which should be copied into the clipboard
  */
-function onTooltipClicked(element, url) {
+function onTooltipClicked(element) {
+    var languageCodeElement = document.getElementById("language-code");
+    var languageCode = languageCodeElement.innerHTML;
+
     alreadyClicked = true;
+
+    let text = "grammaticus.io/" + languageCode + "/" + languages[languageCode] + "/" + filenames[languageCode] + ".html";
+    if(!!element.id) {
+        text = text + "#" + element.id
+    }
     navigator.clipboard
-    .writeText(url)
+
+    .writeText(text)
     .then(() => {
         // const isMobile = navigator.userAgentData.mobile;
         if(window.innerWidth <= 1100) {
@@ -16,13 +25,16 @@ function onTooltipClicked(element, url) {
 
             let alertText = document.getElementById("alert-text");
 
-            alertText.innerHTML = "link copied"; // TODO: translate dynamically to choosen language
             setTimeout(() => {
                 tooltipText.style.display = "none";
             }, 3000);
         } else {
-            let tooltipText = element.getElementsByClassName("tooltiptext")[0];
-            tooltipText.innerHTML = "link copied"; // TODO: translate dynamically to choosen language
+            let tooltipTextCopy = element.getElementsByClassName("tooltiptext")[0];
+            let tooltipTextCopied = element.getElementsByClassName("tooltiptext")[1];
+
+            tooltipTextCopy.style.display = "none";
+
+            tooltipTextCopied.style.display = "inline";
         }
 
     })
@@ -37,10 +49,11 @@ function onTooltipClicked(element, url) {
  * @param {*} element the parent element which the tooltip button is a childen of
  */
 function onTooltipLeft(element) {
-    let tooltipText = element.getElementsByClassName("tooltiptext")[0];
+    let tooltipTextCopy = element.getElementsByClassName("tooltiptext")[0];
+    let tooltipText = element.getElementsByClassName("tooltiptext")[1];
 
-    tooltipText.innerHTML = "copy link"; // TODO: translate dynamically to choosen language
-    tooltipText.style.visibility = "hidden";
+    tooltipTextCopy.style.display = "none";
+    tooltipText.style.display = "none";
 }
 
 /**
@@ -50,6 +63,6 @@ function onTooltipLeft(element) {
 function onTooltipEnter(element){
     if(window.innerWidth > 780) {
         let tooltipText = element.getElementsByClassName("tooltiptext")[0];
-        tooltipText.style.visibility = "visible";
+        tooltipText.style.display = "inline";
     }
 }

@@ -11,6 +11,17 @@ button:hover.header-button:hover {
 	transition-duration: 0.08s;
 }
 
+.language-learn-switch {
+	display: none !important;
+}
+
+/*** not mobile devices ***/
+@media (min-width: 1100px) {
+	.language-learn-switch {
+	  display: inline-block !important;
+	}
+  }
+
 
 .material-icons {
 	font-family: 'Material Icons';

@@ -36,8 +36,23 @@
     
     <body>
         <div onmouseleave="closeLanguageSelector()" id="language-selector" class="all-languages">
-            <div onclick="changeLanguage('en')" class="language-entry">English</div>
-            <div onclick="changeLanguage('de')" class="language-entry">German</div>
+            <div class="language-header"><translate>north_germanic</translate></div>
+            <div onclick="changeLanguage('da')" class="language-entry"><translate>danish</translate></div>
+            <!-- <div onclick="changeLanguage('fo')" class="language-entry"><translate>faroese</translate></div> -->
+            <div onclick="changeLanguage('is')" class="language-entry"><translate>icelandic</translate></div>
+            <div onclick="changeLanguage('no')" class="language-entry"><translate>norwegian</translate></div>
+            <div onclick="changeLanguage('sv')" class="language-entry"><translate>swedish</translate></div>
+            <div class="language-header"><translate>west_germanic</translate></div>
+            <div onclick="changeLanguage('nl')" class="language-entry"><translate>dutch</translate></div>
+            <div onclick="changeLanguage('en')" class="language-entry"><translate>english</translate></div>
+            <div onclick="changeLanguage('fy')" class="language-entry"><translate>frisian</translate></div>
+            <div onclick="changeLanguage('de')" class="language-entry"><translate>german</translate></div>
+            <div class="language-header"><translate>romance</translate></div>
+            <div onclick="changeLanguage('fr')" class="language-entry"><translate>french</translate></div>
+            <div onclick="changeLanguage('it')" class="language-entry"><translate>italian</translate></div>
+            <div onclick="changeLanguage('pt')" class="language-entry"><translate>portuguese</translate></div>
+            <div onclick="changeLanguage('es')" class="language-entry"><translate>spanish</translate></div>
+
         </div>
         <div class="grid-container">
             <div class="header">
@@ -51,12 +66,28 @@
                 <span class="sub-header">
                     <builder-sub-header></builder-sub-header>
                 </span>
+
+                <button class="material-icons md-light header-button language-learn-switch">
+                    <span><translate>swedish</translate></span>
+                </button>
+                <!-- <button class="material-icons md-light header-button">
+                    <span><translate>danish</translate></span>
+                </button>
+                <button class="material-icons md-light header-button">
+                    <span><translate>faroese</translate></span>
+                </button>
+                <button class="material-icons md-light header-button">
+                    <span><translate>icelandic</translate></span>
+                </button>
+                <button class="material-icons md-light header-button">
+                    <span><translate>norwegian</translate></span>
+                </button> -->
                 
                 <div class="icons-right">
                     <button
                         onclick="toggleLanguageSelector()"
                         class="material-icons md-light header-button">
-                        <img src="../../static/language.svg" alt="language symbol"><span id="language-code" class="current-language">EN</span><img src="../../static/arrow.svg" alt="language dropdow">
+                        <img src="../../static/language.svg" alt="language symbol"><span id="language-code" class="current-language">EN</span>
                     </button>
 
                     <button
@@ -86,7 +117,7 @@
         </div>
 
         <div id="alert-badge" class="alert-badge">
-            <div id="alert-text" class="alert-text"></div>
+            <div id="alert-text" class="alert-text"><translate>link_kopiert</translate></div>
             <div class="bar"></div>
         </div>
 

@@ -31,14 +31,13 @@ window.onload = function() {
 
     const currentUrl = window.location.href;
 
-    let languageCodePlace = 1;
+    let languageCodePlace = 3;
     if(currentUrl.startsWith("file")){ // dev environment
         languageCodePlace = 10;
     } 
 
     const urlParts = currentUrl.split('/');
-    
-    languageCodeElement.innerHTML = urlParts[languageCodePlace];
+    languageCodeElement.innerHTML = urlParts[languageCodePlace] ? urlParts[languageCodePlace] : 'EN';
 }
 
 function scrollTest() {
@@ -61,6 +60,7 @@ function scrollTest() {
             }
 
             if(element.id != 'top') {
+                console.log(element.id)
                 document.getElementById(element.id + '_nav').classList.add("active");
             }
             break;

@@ -2,6 +2,7 @@ from pathlib import Path
 from distutils.dir_util import copy_tree
 from bs4 import BeautifulSoup
 import re, os, json, shutil
+from unidecode import unidecode
 
 # import configuration json
 f = open("../buildConfig.json")
@@ -27,12 +28,28 @@ def ersetze_umlaute(string):
     string = string.replace("oe", "ö")
     string = string.replace("ue", "ü")
     string = string.replace("ss", "ß")
+
     return string
+
+def use_unidecode(data):
+    if isinstance(data, dict):
+        test = {k: use_unidecode(v) for k, v in data.items()}
+        return test
+    elif isinstance(data, list):
+        return [use_unidecode(item) for item in data]
+    elif isinstance(data, str):
+        return unidecode(data)
+    else:
+        return data
+
+
+
 
 def translate_text(input_text, translation_dict, language_code, file_name):
     # Regular expression to find text within <translate></translate> tags
     translate_pattern = re.compile(r'<translate>(.*?)<\/translate>', re.DOTALL)
-
+    pattern = re.compile(r'(m-href="#([\w-]+)"|m-id="([\w-]+)")')
+    
     def replace_translation(match):
         # Extract the text within <translate></translate> tags
         text_to_translate = match.group(1).strip()
@@ -47,10 +64,24 @@ def translate_text(input_text, translation_dict, language_code, file_name):
 
         translation = translation_from_dict
  
-        return f'<translate>{translation}</translate>'
+        return f'{translation}'
+
+    def replace_match(match):
+        if match.group(2):  # for m-href="#word"
+            attribute = 'href'
+            word = match.group(2)
+        else:  # for m-id="word"
+            attribute = 'id'
+            word = match.group(3)
+        
+        if word in translation_dict and language_code in translation_dict[word]:
+            return f'{attribute}="#{translation_dict[word][language_code]}"' if attribute == 'href' else f'{attribute}="{translation_dict[word][language_code]}"'
+        else:
+            return match.group(0)  # Return the original match if word or language_code is not in the dictionary
 
     # Use re.sub to replace the text within <translate></translate> tags with translations
     output_text = translate_pattern.sub(replace_translation, input_text)
+    output_text = pattern.sub(replace_match, output_text)
 
     return output_text
 
@@ -60,7 +91,7 @@ for language_code in build_config["availableLanguages"]:
     f = open("../" + build_config["contentTemplatesPath"] + "localization.json")
     general_localization = json.load(f)
 
-    Path("./build/" + language_code + "/" + general_localization["language"][language_code]).mkdir(parents=True, exist_ok=True)
+    Path("./build/" + language_code + "/" + use_unidecode(general_localization["language"][language_code])).mkdir(parents=True, exist_ok=True)
 
 
     # insert every file content into template
@@ -132,23 +163,24 @@ for language_code in build_config["availableLanguages"]:
 
                         if(page_name_of_list not in build_config["navigationBlacklist"]):
                             if page_name_of_list != page_name.split("_")[1].split(".")[0]:
-                                nav_html = nav_html + f'\n<a class="navigationElement" href="/en/swedish/{translation_dict_of_list["filename"][language_code]}.html">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
+                                nav_html = nav_html + f'\n<a class="navigationElement" href="/{language_code}/{use_unidecode(general_localization["language"][language_code])}/{use_unidecode(translation_dict_of_list["filename"][language_code])}.html">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
                             else:
-                                nav_html = nav_html + f'\n<a class="navigationElement active" href="/en/swedish/{translation_dict_of_list["filename"][language_code]}.html" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
+                                nav_html = nav_html + f'\n<a class="navigationElement active" href="/{language_code}/{use_unidecode(general_localization["language"][language_code])}/{use_unidecode(translation_dict_of_list["filename"][language_code])}.html" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
                         else:
                             content_copy = re.sub('<builder-header-tags></builder-header-tags>', '<meta name="robots" content="noindex, nofollow">', content_copy)
 
 
                     content_copy = re.sub('<builder-nav></builder-nav>', f'{nav_html}', content_copy)
 
+                    # translate with the general localozation
+                    content_copy = translate_text(content_copy, general_localization, language_code, "../" + build_config["contentTemplatesPath"] + "localization.json")
+
                     # safe as new file
                     translated_filename = translation_dict["filename"][language_code]
 
-                    print(general_localization["language"])
-                    content_copy = re.sub('builder-translation-language', f'var languages = {general_localization["language"]}', content_copy)
-                    print(translation_dict["filename"])
-                    content_copy = re.sub('builder-translation-filename', f'var filenames = {translation_dict["filename"]}', content_copy)
+                    content_copy = re.sub('builder-translation-language', f'var languages = {use_unidecode(general_localization["language"])}', content_copy)
+                    content_copy = re.sub('builder-translation-filename', f'var filenames = {use_unidecode(translation_dict["filename"])}', content_copy)
 
-                    with open(f'./build/{language_code}/{general_localization["language"][language_code]}/{translated_filename}.html', 'w') as outfile:
+                    with open(f'./build/{language_code}/{use_unidecode(general_localization["language"][language_code])}/{use_unidecode(translated_filename)}.html', 'w') as outfile:
                         outfile.write(content_copy)
 
