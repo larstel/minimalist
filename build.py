@@ -15,13 +15,13 @@ Path("./build").mkdir(exist_ok=True)
 copy_tree("./scripts", "./build/scripts")
 copy_tree("./styles", "./build/styles")
 copy_tree("./static", "./build/static")
-copy_tree("../configs", "./build/configs")
+# copy_tree("../configs", "./build/configs")
 
 # copy custom css into build
 shutil.copyfile("../custom.css", "./build/styles/custom.css")
 
 # copy icon into build
-shutil.copyfile("../" + build_config["iconPath"], "./build/static/icon.svg")
+shutil.copyfile(build_config["iconPath"], "./build/static/icon.svg")
 
 def ersetze_umlaute(string):
     string = string.replace("ae", "ä")
