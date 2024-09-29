@@ -128,7 +128,7 @@ for language_code in build_config["availableLanguages"]:
                     content_copy = re.sub('builder-content-keywords', keywords, content_copy)
 
                     # insert title
-                    content_copy = re.sub('<builder-title></builder-title>', general_localization["title"][language_code] + " | " + ersetze_umlaute(translation_dict["nav_title"][language_code].capitalize()), content_copy)
+                    content_copy = re.sub('<builder-title></builder-title>', general_localization["title"][language_code] + " | " + ersetze_umlaute(translation_dict["filename"][language_code].capitalize()), content_copy)
 
                     # insert header
                     content_copy = re.sub('<builder-header></builder-header>', build_config["header"], content_copy)
