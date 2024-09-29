@@ -12,18 +12,14 @@ build_config = json.load(f)
 Path("./build").mkdir(exist_ok=True)
 
 # copy scripts, static, styles, configs
-copy_tree("./scripts", "./build/scripts")
-copy_tree("./styles", "./build/styles")
-copy_tree("./static", "./build/static")
-# copy_tree("../configs", "./build/configs")
-
-# copy custom css into build
-shutil.copyfile("../custom.css", "./build/styles/custom.css")
+copy_tree("../scripts", "./build/scripts")
+copy_tree("../styles", "./build/styles")
+copy_tree("../static", "./build/static")
 
 # copy icon into build
 shutil.copyfile(build_config["iconPath"], "./build/static/icon.svg")
 
-def ersetze_umlaute(string):
+def replace_umlauts(string):
     string = string.replace("ae", "ä")
     string = string.replace("oe", "ö")
     string = string.replace("ue", "ü")
@@ -41,9 +37,6 @@ def use_unidecode(data):
         return unidecode(data)
     else:
         return data
-
-
-
 
 def translate_text(input_text, translation_dict, language_code, file_name):
     # Regular expression to find text within <translate></translate> tags
@@ -95,7 +88,7 @@ for language_code in build_config["availableLanguages"]:
 
 
     # insert every file content into template
-    with open("./template.html", 'r') as infile:
+    with open("../template.html", 'r') as infile:
         content = infile.read()
 
         # go to folder configurated in build config
@@ -120,15 +113,15 @@ for language_code in build_config["availableLanguages"]:
                     content_copy = re.sub('builder-content-language', language_code, content_copy)
 
                     # insert content description
-                    description = ersetze_umlaute(translation_dict["description"][language_code])
+                    description = replace_umlauts(translation_dict["description"][language_code])
                     content_copy = re.sub('builder-content-description', description, content_copy)
 
                     # insert content keywords
-                    keywords = ersetze_umlaute(active_page_title.capitalize()) + ', ' + ersetze_umlaute(translation_dict["keywords"][language_code])
+                    keywords = replace_umlauts(active_page_title.capitalize()) + ', ' + replace_umlauts(translation_dict["keywords"][language_code])
                     content_copy = re.sub('builder-content-keywords', keywords, content_copy)
 
                     # insert title
-                    content_copy = re.sub('<builder-title></builder-title>', general_localization["title"][language_code] + " | " + ersetze_umlaute(translation_dict["filename"][language_code].capitalize()), content_copy)
+                    content_copy = re.sub('<builder-title></builder-title>', general_localization["title"][language_code] + " | " + replace_umlauts(translation_dict["filename"][language_code].capitalize()), content_copy)
 
                     # insert header
                     content_copy = re.sub('<builder-header></builder-header>', build_config["header"], content_copy)
@@ -163,9 +156,9 @@ for language_code in build_config["availableLanguages"]:
 
                         if(page_name_of_list not in build_config["navigationBlacklist"]):
                             if page_name_of_list != page_name.split("_")[1].split(".")[0]:
-                                nav_html = nav_html + f'\n<a class="navigationElement" href="/{language_code}/{use_unidecode(general_localization["language"][language_code])}/{use_unidecode(translation_dict_of_list["filename"][language_code])}.html">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
+                                nav_html = nav_html + f'\n<a class="navigationElement" href="/{language_code}/{use_unidecode(general_localization["language"][language_code])}/{use_unidecode(translation_dict_of_list["filename"][language_code])}.html">{replace_umlauts(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
                             else:
-                                nav_html = nav_html + f'\n<a class="navigationElement active" href="/{language_code}/{use_unidecode(general_localization["language"][language_code])}/{use_unidecode(translation_dict_of_list["filename"][language_code])}.html" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{ersetze_umlaute(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
+                                nav_html = nav_html + f'\n<a class="navigationElement active" href="/{language_code}/{use_unidecode(general_localization["language"][language_code])}/{use_unidecode(translation_dict_of_list["filename"][language_code])}.html" id="_nav" onclick="onSideNavigationLinkClicked(_nav)">{replace_umlauts(translation_dict_of_list["filename"][language_code].capitalize())}</a>'
                         else:
                             content_copy = re.sub('<builder-header-tags></builder-header-tags>', '<meta name="robots" content="noindex, nofollow">', content_copy)
 
