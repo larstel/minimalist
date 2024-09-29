@@ -191,7 +191,6 @@ File must at least contain the following content:
 
 ## Roadmap
 
-- [ ] removing opinionated CSS and JavaScript.
 - [ ] enable the creation of multiple HTML templates for the entire project
 
 See the [open issues](https://github.com/larstel/minimalist/issues) for a full list of proposed features (and known issues).
@@ -230,11 +229,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
-
-## Contact
-https://x.com/lars_tel
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 
